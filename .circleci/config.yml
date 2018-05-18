@@ -1,0 +1,18 @@
+version: 2
+jobs:
+  deploy-job:
+    docker:
+      - image: gcr.io/project/image-name
+        auth:
+          username: _json_key  # default username when using a JSON key file to authenticate
+          password: test-1-likith-trax.json  # JSON service account you created
+
+gcloud --quiet components update  # remove if using the google/cloud-sdk image
+gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+gcloud --quiet container clusters get-credentials ${GOOGLE_CLUSTER_NAME}
+
+#echo $GCLOUD_SERVICE_KEY > ../../test-1-likith-trax.json
+#sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=../../test-1-likith-trax.json
+#sudo /opt/google-cloud-sdk/bin/gcloud config set project $test-1
