@@ -2,7 +2,7 @@ version: 2
 jobs:
   deploy-job:
     docker:
-      - image: gcr.io/project/image-name
+      - image: node
         auth:
           username: _json_key  # default username when using a JSON key file to authenticate
           password: test-1-likith-trax.json  # JSON service account you created
