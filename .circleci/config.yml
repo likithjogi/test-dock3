@@ -8,7 +8,7 @@ jobs:
           password: test-1-likith-trax.json  # JSON service account you created
 
 gcloud --quiet components update  # remove if using the google/cloud-sdk image
-gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+gcloud auth activate-service-account --key-file=test-1-likith-trax.json
 gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
 gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
 gcloud --quiet container clusters get-credentials ${GOOGLE_CLUSTER_NAME}
